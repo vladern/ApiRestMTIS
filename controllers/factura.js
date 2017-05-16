@@ -1,45 +1,38 @@
 'use strict'
 
-const Producto = require('../models/producto')
+const Factura = require('../models/factura')
 
-
-function getProduct(req,res)
+function getFactura(req,res)
 {
-    let productId = req.params.id
-    //busco el producto por su id
-    Producto.findOne({"id":productId},(err,producto)=>
+    let facturaId = req.params.id
+    //busco el Factura por su id
+    Factura.findOne({"id":facturaId},(err,factura)=>
     {
         if(err) return res.status(500).send({message:err})
-        if(!producto) return res.status(404).send({message:'No se ha encontrado el producto'})
+        if(!factura) return res.status(404).send({message:'No se ha encontrado el Factura'})
 
         //nueva propiedad del JS 6 si se llaman igual solo con poner uno ya vale
-        res.status(200).send({producto})
-
+        res.status(200).send({factura})
     })
 }
 
-function getProducts(req,res)
+function getFacturas(req,res)
 {
-    let productId = req.params.id
-     //busco
-    Producto.find({},(err,producto)=>
+    Factura.findOne({},(err,factura)=>
     {
-
         if(err) return res.status(500).send({message:err})
-        if(!producto) return res.status(404).send({message:'No se ha encontrado el producto'})
+        if(!factura) return res.status(404).send({message:'No se ha encontrado el Factura'})
 
         //nueva propiedad del JS 6 si se llaman igual solo con poner uno ya vale
-        res.status(200).send({producto})
-
+        res.status(200).send({factura})
     })
 }
-
-function updateProduct(req,res)
+function updateFactura(req,res)
 {
-    let productId = req.params.id
+            let facturaId = req.params.id
             let update = req.body
-            console.log(productId)
-            Producto.findOneAndUpdate({"id":productId},update,(err,producto)=>
+            console.log(facturaId)
+            Producto.findOneAndUpdate({"id":facturaId},update,(err,producto)=>
             {
                 //si ha habido error a la hora de actualizar el producto
                 if(err) return res.status(500).send({message:`Error al borrar el producto: ${err}`})
@@ -49,27 +42,29 @@ function updateProduct(req,res)
             })
 }
 
-function saveProduct(req,res)
+
+function saveFactura(req,res)
 {
-    let producto =new Producto()
-        producto.id = req.body.id
-        producto.nombre = req.body.nombre
-        producto.cantidad = req.body.cantidad
+    let factura =new Factura()
+        factura.id = req.body.id
+        factura.productos = req.body.productos
+        factura.precioTotal = req.body.precioTotal
+        console.log(factura.productos)
         //guardamos en la base de datos el producto y mongodb nos devuelve dos parametros el error y el producto guardado
-        producto.save((err,productStored)=>
+        factura.save((err,facturaStored)=>
         {
             if(err) res.status(500).send({message:`Error al guardar en la bd: ${err}`})
 
-            res.status(200).send({producto: productStored})
+            res.status(200).send({factura: facturaStored})
         })
 }
 
-function deleteProduct(req,res)
+function deleteFactura(req,res)
 {
-    let productId = req.params.id
-    console.log(productId)
+    let facturaId = req.params.id
+    console.log(facturaId)
     //busco el producto por su id
-    Producto.findById(productId,(err,producto)=>
+    Producto.findById(facturaId,(err,producto)=>
     {
         if(err) return res.status(500).send({message:err})
         if(!producto) return res.status(404).send({message:'No se ha encontrado el producto'})
@@ -81,14 +76,13 @@ function deleteProduct(req,res)
             //sino
             res.status(200).send({message:'el producto ha sido eliminado'})
         })
-
     })
 }
-module.exports = 
+module.exports=
 {
-    getProduct,
-    getProducts,
-    updateProduct,
-    saveProduct,
-    deleteProduct
+    getFactura,
+    getFacturas,
+    updateFactura,
+    saveFactura,
+    deleteFactura
 }
