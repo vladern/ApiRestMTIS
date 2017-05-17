@@ -5,6 +5,7 @@ const api = express.Router()
 const ProductCtr = require('../controllers/producto')
 const FacturaCtr = require('../controllers/factura')
 const OfertaCtr = require('../controllers/oferta')
+const VentaCtr = require('../controllers/venta')
 
 //conseguir un producto con un id concreto
 api.get('/producto/:id',ProductCtr.getProduct)
@@ -44,6 +45,20 @@ api.post('/oferta',OfertaCtr.saveOferta)
 api.delete('/oferta/:id',OfertaCtr.deleteOferta)
 //actualizar un factura que ya esta en la bd
 api.put('/oferta/:id',OfertaCtr.updateOferta)
+/**----------------------------------------------------------------
+ * ------------------------------Venta-----------------------------
+ * ----------------------------------------------------------------
+ */
+//conseguir un factura con un id concreto
+api.get('/venta/:id',VentaCtr.getVenta)
+//conseguir todos los facturas de la bd
+api.get('/venta',VentaCtr.getVentas)
+//gurdar un factura en la bd
+api.post('/venta',VentaCtr.saveVenta)
+//borrar un factura de la bd
+api.delete('/venta/:id',VentaCtr.deleteVenta)
+//actualizar un factura que ya esta en la bd
+api.put('/venta/:id',VentaCtr.updateVenta)
 /**--------------------------------------------------------------- 
  * ---------------------------------------------------------------
  * ---------------------------------------------------------------

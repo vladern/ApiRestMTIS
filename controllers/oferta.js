@@ -32,7 +32,7 @@ function updateOferta(req,res)
             let ofertaId = req.params.id
             let update = req.body
             console.log(ofertaId)
-            Oferta.findOneAndUpdate({"id":ofertaId},update,(err,producto)=>
+            Oferta.findOneAndUpdate({"id":ofertaId},update,(err,oferta)=>
             {
                 //si ha habido error a la hora de actualizar el producto
                 if(err) return res.status(500).send({message:`Error al borrar el oferta: ${err}`})
@@ -60,16 +60,16 @@ function deleteOferta(req,res)
 {
     let ofertaId = req.params.id
     console.log(ofertaId)
-    //busco el producto por su id
-    Producto.findById(ofertaId,(err,producto)=>
+    //busco la oferta por su id
+    Oferta.findById(ofertaId,(err,oferta)=>
     {
         if(err) return res.status(500).send({message:err})
-        if(!producto) return res.status(404).send({message:'No se ha encontrado la oferta'})
+        if(!oferta) return res.status(404).send({message:'No se ha encontrado la oferta'})
 
-        producto.remove(err =>
+        oferta.remove(err =>
         {
-            //si ha habido error a la hora de borrar el producto
-            if(err) return res.status(500).send({message:`Error al borrar el producto: ${err}`})
+            //si ha habido error a la hora de borrar el oferta
+            if(err) return res.status(500).send({message:`Error al borrar el oferta: ${err}`})
             //sino
             res.status(200).send({message:'la oferta ha sido eliminada'})
         })

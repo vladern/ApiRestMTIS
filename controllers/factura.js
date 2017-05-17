@@ -32,13 +32,13 @@ function updateFactura(req,res)
             let facturaId = req.params.id
             let update = req.body
             console.log(facturaId)
-            Producto.findOneAndUpdate({"id":facturaId},update,(err,producto)=>
+            Factura.findOneAndUpdate({"id":facturaId},update,(err,factura)=>
             {
-                //si ha habido error a la hora de actualizar el producto
-                if(err) return res.status(500).send({message:`Error al borrar el producto: ${err}`})
+                //si ha habido error a la hora de actualizar el factura
+                if(err) return res.status(500).send({message:`Error al borrar el factura: ${err}`})
                 //sino
                 console.log('se ha actualizado')
-                return res.status(200).send({message:'el producto ha sido actualizado'})
+                return res.status(200).send({message:'el factura ha sido actualizado'})
             })
 }
 
@@ -50,7 +50,7 @@ function saveFactura(req,res)
         factura.productos = req.body.productos
         factura.precioTotal = req.body.precioTotal
         console.log(factura.productos)
-        //guardamos en la base de datos el producto y mongodb nos devuelve dos parametros el error y el producto guardado
+        //guardamos en la base de datos el factura y mongodb nos devuelve dos parametros el error y el factura guardado
         factura.save((err,facturaStored)=>
         {
             if(err) res.status(500).send({message:`Error al guardar en la bd: ${err}`})
@@ -63,18 +63,18 @@ function deleteFactura(req,res)
 {
     let facturaId = req.params.id
     console.log(facturaId)
-    //busco el producto por su id
-    Producto.findById(facturaId,(err,producto)=>
+    //busco el factura por su id
+    Factura.findById(facturaId,(err,factura)=>
     {
         if(err) return res.status(500).send({message:err})
-        if(!producto) return res.status(404).send({message:'No se ha encontrado el producto'})
+        if(!factura) return res.status(404).send({message:'No se ha encontrado el factura'})
 
-        producto.remove(err =>
+        factura.remove(err =>
         {
-            //si ha habido error a la hora de borrar el producto
-            if(err) return res.status(500).send({message:`Error al borrar el producto: ${err}`})
+            //si ha habido error a la hora de borrar el factura
+            if(err) return res.status(500).send({message:`Error al borrar el factura: ${err}`})
             //sino
-            res.status(200).send({message:'el producto ha sido eliminado'})
+            res.status(200).send({message:'el factura ha sido eliminado'})
         })
     })
 }
