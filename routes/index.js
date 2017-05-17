@@ -6,6 +6,7 @@ const ProductCtr = require('../controllers/producto')
 const FacturaCtr = require('../controllers/factura')
 const OfertaCtr = require('../controllers/oferta')
 const VentaCtr = require('../controllers/venta')
+const InfomeCtr = require('../controllers/informeError')
 
 //conseguir un producto con un id concreto
 api.get('/producto/:id',ProductCtr.getProduct)
@@ -35,15 +36,15 @@ api.put('/factura/:id',FacturaCtr.updateFactura)
  * ------------------------------Oferta----------------------------
  * ----------------------------------------------------------------
  */
-//conseguir un factura con un id concreto
+//conseguir una oferta con un id concreto
 api.get('/oferta/:id',OfertaCtr.getOferta)
-//conseguir todos los facturas de la bd
+//conseguir todos las ofertas de la bd
 api.get('/ofertas',OfertaCtr.getOfertas)
-//gurdar un factura en la bd
+//gurdar una oferta en la bd
 api.post('/oferta',OfertaCtr.saveOferta)
-//borrar un factura de la bd
+//borrar una oferta de la bd
 api.delete('/oferta/:id',OfertaCtr.deleteOferta)
-//actualizar un factura que ya esta en la bd
+//actualizar una oferta que ya esta en la bd
 api.put('/oferta/:id',OfertaCtr.updateOferta)
 /**----------------------------------------------------------------
  * ------------------------------Venta-----------------------------
@@ -53,12 +54,26 @@ api.put('/oferta/:id',OfertaCtr.updateOferta)
 api.get('/venta/:id',VentaCtr.getVenta)
 //conseguir todos los facturas de la bd
 api.get('/venta',VentaCtr.getVentas)
-//gurdar un factura en la bd
+//gurdar una factura en la bd
 api.post('/venta',VentaCtr.saveVenta)
-//borrar un factura de la bd
+//borrar una factura de la bd
 api.delete('/venta/:id',VentaCtr.deleteVenta)
-//actualizar un factura que ya esta en la bd
+//actualizar una venta que ya esta en la bd
 api.put('/venta/:id',VentaCtr.updateVenta)
+/**----------------------------------------------------------------
+ * ------------------------------InformeError----------------------
+ * ----------------------------------------------------------------
+ */
+//conseguir un informe con un id concreto
+api.get('/informe/:id',InfomeCtr.getInforme)
+//conseguir todos los informes de la bd
+api.get('/informes',InfomeCtr.getInformes)
+//gurdar un informe en la bd
+api.post('/informe',InfomeCtr.saveInforme)
+//borrar un informe de la bd
+api.delete('/informe/:id',InfomeCtr.deleteInforme)
+//actualizar un informe que ya esta en la bd
+api.put('/informe/:id',InfomeCtr.updateInforme)
 /**--------------------------------------------------------------- 
  * ---------------------------------------------------------------
  * ---------------------------------------------------------------

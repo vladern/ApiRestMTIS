@@ -8,4 +8,4 @@ const InformeSchema = Schema
     nombre: String,
     descripcion: String
 })
-module.exports = mongoose.model('Venta',VentaSchema)
+module.exports = mongoose.model('InformeError',InformeSchema)
