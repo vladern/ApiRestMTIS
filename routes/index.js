@@ -7,6 +7,8 @@ const FacturaCtr = require('../controllers/factura')
 const OfertaCtr = require('../controllers/oferta')
 const VentaCtr = require('../controllers/venta')
 const InfomeCtr = require('../controllers/informeError')
+const auth = require('../middlewares/auth')
+const AuthCtr = require('../controllers/auth')
 
 //conseguir un producto con un id concreto
 api.get('/producto/:id',ProductCtr.getProduct)
@@ -74,11 +76,22 @@ api.post('/informe',InfomeCtr.saveInforme)
 api.delete('/informe/:id',InfomeCtr.deleteInforme)
 //actualizar un informe que ya esta en la bd
 api.put('/informe/:id',InfomeCtr.updateInforme)
+/**----------------------------------------------------------------
+ * ------------------------------AuthUser--------------------------
+ * ----------------------------------------------------------------
+ */
+api.post('/signup',AuthCtr.signUP)
+api.post('/signin',AuthCtr.signIn)
 /**--------------------------------------------------------------- 
  * ---------------------------------------------------------------
  * ---------------------------------------------------------------
 */
-api.post('/signin',(req,res)=>
+api.get('/private',auth,(req,res)=>
+{
+    console.log('ha entrado un usuario authentificado')
+    res.status(200).send({message:'OK'})
+})
+api.post('/login',(req,res)=>
 {
     console.log('peticion de autentificar')
     res.status(200).send({message:'OK'})

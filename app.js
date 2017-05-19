@@ -19,4 +19,8 @@ app.use('/login',(req,res)=>
 {
     res.render('login')
 })
+app.use('/productos',(req,res)=>
+{
+    res.render('producto')
+})
 module.exports=app

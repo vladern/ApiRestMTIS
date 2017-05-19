@@ -17,7 +17,7 @@ UserSchema.pre('save',(next)=>
 {
     let user = this
     //si la contraseña no se ha modificado
-    if(!user.isModified('password')) return next()
+    //if(!user.isModified('password')) return next()
 
     bcrypt.genSalt(10,(err,salt)=>
     {
