@@ -2,7 +2,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const VentaSchema = Schema
+const VentaSchema = new  Schema
 ({
     id : Number,
     productos: ['Producto'],

@@ -55,6 +55,7 @@ function saveProduct(req,res)
         producto.id = req.body.id
         producto.nombre = req.body.nombre
         producto.cantidad = req.body.cantidad
+        producto.precio = req.body.precio
         //guardamos en la base de datos el producto y mongodb nos devuelve dos parametros el error y el producto guardado
         producto.save((err,productStored)=>
         {

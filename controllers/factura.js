@@ -33,7 +33,7 @@ function updateFactura(req, res) {
         if (err) return res.status(500).send({ message: `Error al borrar el factura: ${err}` })
             //sino
         console.log('se ha actualizado')
-        return res.status(200).send({ message: 'el factura ha sido actualizado' })
+        return res.status(200).send({ message: 'la factura ha sido actualizada' })
     })
 }
 
@@ -65,7 +65,7 @@ function deleteFactura(req, res) {
             //si ha habido error a la hora de borrar el factura
             if (err) return res.status(500).send({ message: `Error al borrar el factura: ${err}` })
                 //sino
-            res.status(200).send({ message: 'el factura ha sido eliminado' })
+            res.status(200).send({ message: 'la factura ha sido eliminada' })
         })
     })
 }

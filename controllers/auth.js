@@ -15,7 +15,7 @@ function signUP(req,res)
     {
         if(err) return res.status(500).send({message:'no se ha podido registrar al usuario:'+`${err}`})
 
-        res.status(200).send({token: service.createToken(user)})
+        return res.status(200).send({token: service.createToken(user),message: 'OK'})
     })
 }
 
