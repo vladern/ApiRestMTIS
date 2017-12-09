@@ -5,6 +5,7 @@ const bodyParser=require('body-parser')
 const hbs = require('express-handlebars')
 const app = express()
 const api = require('./routes')
+var cors = require('cors')
 
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
@@ -23,4 +24,7 @@ app.use('/productos',(req,res)=>
 {
     res.render('producto')
 })
+
+// uso de cors
+app.use(cors())
 module.exports=app
