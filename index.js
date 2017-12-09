@@ -3,6 +3,7 @@
 const mongoose = require('mongoose')
 const app = require('./app')
 const config = require('./config')
+var cors = require('cors')
 
 /** ----------------------------Conexión a base de datos-----------------------------------
  * ----------------------------------------------------------------------------------------
@@ -19,3 +20,5 @@ mongoose.connect(config.db,(err,res)=>
         console.log(`API Rest corriendo en localhost:${config.puerto}`)
     })
 })
+// uso de cors
+app.use(cors())
