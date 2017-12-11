@@ -11,15 +11,15 @@ const auth = require('../middlewares/auth')
 const AuthCtr = require('../controllers/auth')
 
 //conseguir un producto con un id concreto
-api.get('/producto/:id',ProductCtr.getProduct)
+api.get('/producto/:id',auth, ProductCtr.getProduct)
 //conseguir todos los productos de la bd
-api.get('/productos',ProductCtr.getProducts)
+api.get('/productos',auth, ProductCtr.getProducts)
 //gurdar un producto en la bd
-api.post('/producto',ProductCtr.saveProduct)
+api.post('/producto',auth ,ProductCtr.saveProduct)
 //borrar un producto de la bd
-api.delete('/producto/:id',ProductCtr.deleteProduct)
+api.delete('/producto/:id',auth ,ProductCtr.deleteProduct)
 //actualizar un producto que ya esta en la bd
-api.put('/producto/:id',ProductCtr.updateProduct)
+api.put('/producto/:id',auth ,ProductCtr.updateProduct)
 /**----------------------------------------------------------------
  * ------------------------------Factura---------------------------
  * ----------------------------------------------------------------
