@@ -6,7 +6,7 @@ const Schema = mongoose.Schema
 
 const ProductSchema = Schema
 ({
-    id : Number,
+    id : String,
     nombre : String,
     cantidad : Number,
     precio : Number 
