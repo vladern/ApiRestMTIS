@@ -7,7 +7,7 @@ function getProduct(req,res)
 {
     let productId = req.params.id
     //busco el producto por su id
-    Producto.findOne({"id":productId},(err,producto)=>
+    Producto.find({"id":productId},(err,producto)=>
     {
         if(err) return res.status(500).send({message:err})
         if(!producto) return res.status(404).send({message:'No se ha encontrado el producto'})
