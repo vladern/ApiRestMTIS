@@ -39,7 +39,7 @@ function updateProduct(req,res)
     let productId = req.params.id
             let update = req.body
             console.log(productId)
-            Producto.findOneAndUpdate({"id":productId},update,(err,producto)=>
+            Producto.findOneAndUpdate({"_id":productId},update,(err,producto)=>
             {
                 //si ha habido error a la hora de actualizar el producto
                 if(err) return res.status(500).send({message:`Error al borrar el producto: ${err}`})
